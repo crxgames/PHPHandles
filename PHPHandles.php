@@ -79,27 +79,7 @@ namespace PHPHandles
 				throw new \Exception('Parameter passed to setTemplateVarsArray() is not an array');
 			}
 			
-			/* Build out the JS data */
-			$jsVars = '{';
-			$first = true;
-			
-			foreach($arr as $k => $v)
-			{
-				if(!$first)
-				{
-					$jsVars .= ', ';
-				}
-				else
-				{
-					$first = false;
-				}
-				
-				$jsVars .= $k.": '".$v."'";
-			}
-			
-			$jsVars .= '}';
-			
-			$this->TemplateContext = $jsVars;
+			$this->TemplateContext = json_encode($arr);
 			
 			return $this;
 		}
